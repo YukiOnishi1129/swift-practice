@@ -37,7 +37,7 @@ struct MapView: UIViewRepresentable {
         // 第２引数: 結果と一緒に実行するまとまった処理(クロージャ) リクエストの失敗の有無に限らず実行される
         geocoder.geocodeAddressString(
             searchKey,
-            completionHandler: {(placemarks, error) in
+            completionHandler: {(placemarks, error) in // in の後に処理を記述
                 // リクエストの結果が存在し、1件目の情報から位置情報を取り出す
                 // if let: 全ての格納が無事完了したらtrue
                 if let unwrapPlacemarks = placemarks , // placemarks: 取得に成功した位置情報
@@ -49,6 +49,21 @@ struct MapView: UIViewRepresentable {
                     let targetCoordinate = location.coordinate
                     // 経度緯度をデバックエリアに表示
                     print(targetCoordinate)
+                    
+                    // MKPointAnnotationインスタンスを取得し、ピンを生成
+                    let pin = MKPointAnnotation()
+                    // ピンを置く場所に経度緯度を設定
+                    pin.coordinate = targetCoordinate
+                    // ピンのタイトルを設定
+                    pin.title = searchKey
+                    // ピンを地図に置く
+                    uiView.addAnnotation(pin)
+                    // 経度緯度を中心にして半径500mの範囲を表示
+                    uiView.region = MKCoordinateRegion(
+                        center: targetCoordinate,
+                        latitudinalMeters: 500.0,
+                        longitudinalMeters: 500.0
+                    )
                 }
             }
         )
