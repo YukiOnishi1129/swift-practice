@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// アプリのエントリーポイント
 @main
 struct MyJankenApp: App {
     var body: some Scene {
