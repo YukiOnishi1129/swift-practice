@@ -11,7 +11,7 @@ import SwiftUI
 struct MyMapApp: App {
     var body: some Scene {
         WindowGroup {
-            MapView(searchKey: "東京タワー")
+            ContentView()
         }
     }
 }

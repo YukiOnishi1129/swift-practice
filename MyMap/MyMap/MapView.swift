@@ -40,7 +40,8 @@ struct MapView: UIViewRepresentable {
             completionHandler: {(placemarks, error) in // in の後に処理を記述
                 // リクエストの結果が存在し、1件目の情報から位置情報を取り出す
                 // if let: 全ての格納が無事完了したらtrue
-                if let unwrapPlacemarks = placemarks , // placemarks: 取得に成功した位置情報
+                if let unwrapPlacemarks = placemarks , // placemarks:
+                   //  取得に成功した位置情報
                    let firstPlacemarks = unwrapPlacemarks.first , // 配列から取り出す 配列.first: 配列の1つ目の要素を取り出す
                    // 経度緯度、高度などは格納される「location」を取り出す
                    let location = firstPlacemarks.location {
