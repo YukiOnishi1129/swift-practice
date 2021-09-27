@@ -11,6 +11,7 @@
 		B6AAFC792701B1EF0082E853 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AAFC782701B1EF0082E853 /* ContentView.swift */; };
 		B6AAFC7B2701B1F00082E853 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6AAFC7A2701B1F00082E853 /* Assets.xcassets */; };
 		B6AAFC7E2701B1F00082E853 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6AAFC7D2701B1F00082E853 /* Preview Assets.xcassets */; };
+		B6AAFC862701B51B0082E853 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AAFC852701B51B0082E853 /* SoundPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		B6AAFC7A2701B1F00082E853 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6AAFC7D2701B1F00082E853 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B6AAFC7F2701B1F00082E853 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6AAFC852701B51B0082E853 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				B6AAFC762701B1EF0082E853 /* MyMusicApp.swift */,
 				B6AAFC782701B1EF0082E853 /* ContentView.swift */,
+				B6AAFC852701B51B0082E853 /* SoundPlayer.swift */,
 				B6AAFC7A2701B1F00082E853 /* Assets.xcassets */,
 				B6AAFC7F2701B1F00082E853 /* Info.plist */,
 				B6AAFC7C2701B1F00082E853 /* Preview Content */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6AAFC792701B1EF0082E853 /* ContentView.swift in Sources */,
+				B6AAFC862701B51B0082E853 /* SoundPlayer.swift in Sources */,
 				B6AAFC772701B1EF0082E853 /* MyMusicApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
