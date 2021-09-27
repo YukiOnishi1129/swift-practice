@@ -53,8 +53,8 @@ struct ContentView: View {
             
             // 「じゃんけんをする」ボタン
             Button(action: {
-                // 次のジャンケンへ
-                answerNumber = answerNumber + 1
+                // 次のジャンケンへ (乱数)
+                answerNumber = Int.random(in: 1...3)
             }) {
                 // Buttonに表示させる文字の指定
                 Text("じゃんけんする！")
