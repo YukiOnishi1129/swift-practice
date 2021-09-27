@@ -17,8 +17,12 @@ struct ContentView: View {
         
         VStack {
             
+            // スペースを追加
+            Spacer()
+            
             if answerNumber == 0 {
                 Text("これからじゃんけんをします")
+                    .padding(.bottom) // 可変に余白を追加
             } else if answerNumber == 1 {
                 // グー画像を指定
                 Image("gu")
@@ -26,8 +30,13 @@ struct ContentView: View {
                     .resizable()
                     // 画面内に収まるように、アスペクト比(縦横比)を維持する指定
                     .aspectRatio(contentMode: .fit)
+                
+                // スペースを追加
+                Spacer()
+                
                 // ジャンケンの種類を指定
                 Text("グー")
+                    .padding(.bottom) // 可変に余白を追加
                 
             } else if answerNumber == 2 {
                 // チョキ画像を指定
@@ -36,8 +45,13 @@ struct ContentView: View {
                     .resizable()
                     // 画面内に収まるように、アスペクト比(縦横比)を維持する指定
                     .aspectRatio(contentMode: .fit)
+                
+                // スペースを追加
+                Spacer()
+                
                 // ジャンケンの種類を指定
                 Text("チョキ")
+                    .padding(.bottom) // 可変に余白を追加
                 
             } else {
                 // パー画像を指定
@@ -46,8 +60,13 @@ struct ContentView: View {
                     .resizable()
                     // 画面内に収まるように、アスペクト比(縦横比)を維持する指定
                     .aspectRatio(contentMode: .fit)
+                
+                // スペースを追加
+                Spacer()
+                
                 // ジャンケンの種類を指定
                 Text("パー")
+                    .padding(.bottom) // 可変に余白を追加
                 
             }
             
@@ -78,6 +97,12 @@ struct ContentView: View {
             }) {
                 // Buttonに表示させる文字の指定
                 Text("じゃんけんする！")
+                    // maxWidth: .infinity: 画面一杯に表示させる
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 100) // 高さ100px
+                    .font(.title) // 文字の大きさ .titleはiOSが提供する組み込みのフォントサイズ
+                    .background(Color.pink) // 背景色
+                    .foregroundColor(Color.white) // 文字の色
             }
         }
         
