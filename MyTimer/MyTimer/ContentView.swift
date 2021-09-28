@@ -9,8 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            VStack {
+                Text("タイマー画面")
+            }
+            // ナビゲーションバーにボタンを追加
+            .navigationBarItems(trailing:
+                // ナビゲーション遷移
+                NavigationLink(
+                    destination: SettingView()) {
+                    // テキスト表示
+                    Text("秒数設定")
+                }
+            )
+        }
+        
+       
     }
 }
 
