@@ -113,6 +113,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = B621072D2701BE5400411A77;
 			productRefGroup = B62107372701BE5400411A77 /* Products */;
@@ -273,6 +274,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MyMap/Preview Content\"";
+				DEVELOPMENT_TEAM = 5GWH68FSCH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MyMap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -294,6 +296,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MyMap/Preview Content\"";
+				DEVELOPMENT_TEAM = 5GWH68FSCH;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MyMap/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

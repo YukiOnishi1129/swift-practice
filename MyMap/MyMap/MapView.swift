@@ -13,6 +13,8 @@ import MapKit
 struct MapView: UIViewRepresentable {
     // 検索キーワード
     let searchKey: String
+    // マップ種類
+    let mapType: MKMapType
     
      // 表示するViewを作成するときに実行
     // 初回描画時のみ実行される
@@ -27,6 +29,9 @@ struct MapView: UIViewRepresentable {
     func updateUIView(_ uiView: MKMapView, context: Context) {
         // 入力された文字をデバックエリアに表示
         print(searchKey)
+        
+        // マップ種類の設定
+        uiView.mapType = mapType
         // CLGeocoderインスタンスを取得
         //　経度緯度から住所を検索できる
         let geocoder = CLGeocoder()
@@ -74,6 +79,6 @@ struct MapView: UIViewRepresentable {
 // プレビューモードで読み込まれる
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(searchKey: "東京タワー")
+        MapView(searchKey: "東京タワー", mapType: .standard)
     }
 }
