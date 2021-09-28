@@ -8,14 +8,38 @@
 import SwiftUI
 
 struct ContentView: View {
+    // 撮影する写真を保持する状態変数
+    @State var captureImage: UIImage? = nil
+    // 撮影画面のsheetの表示を管理する状態変数
+    @State var isShowSheet = false
+    
     var body: some View {
         // 縦方向にレイアウト
         VStack {
             // スペースを追加
             Spacer()
+            // 撮影した写真がある時
+            if let unwrapCaptureImage = captureImage {
+                // 撮影写真を表示 (画像を表示するためのViewを作成)
+                Image(uiImage: unwrapCaptureImage)
+                    // リサイズ
+                    .resizable()
+                    // アスペクト比を維持して画面内に
+                    .aspectRatio(contentMode: .fit)
+            }
+            // スペースを追加
+            Spacer()
             // 「カメラを起動する」ボタン
             Button(action: {
                 // ボタンをタップした時のアクション
+                if UIImagePickerController.isSourceTypeAvailable(.camera)
+                {
+                    print("カメラは利用できます。")
+                    // カメラが使えるなら、isShowSheetをtrue
+                    isShowSheet = true
+                } else {
+                    print("カメラは利用できません。")
+                }
             }) {
                 // テキストを表示
                 Text("カメラを起動する")
@@ -25,6 +49,14 @@ struct ContentView: View {
                     .multilineTextAlignment(.center)
                     .background(Color.blue)
                     .foregroundColor(Color.white)
+            }
+            // 上下左右に余白を追加
+            .padding()
+            // sheetを表示
+            // isPresentedで指定した状態変数がtrueの時実行
+            .sheet(isPresented: $isShowSheet) {
+                // UIImagePickerController(写真撮影)をsheetに表示
+                ImagePickerView(isShowSheet: $isShowSheet, captureImage: $captureImage)
             }
         }
     }
