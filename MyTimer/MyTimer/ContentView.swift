@@ -8,6 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    // タイマーの変数を作成
+    @State var timerHandler : Timer?
+    // カウント(経過時間)の変数を作成
+    @State var count = 0
+    // 永続化する秒数設定(初期値は10)
+    // AppStorage: データを永続化するUserDefaultsから値を読み込む
+    @AppStorage("timer_value") var timerValue = 10
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -20,7 +28,7 @@ struct ContentView: View {
                 //垂直方向にレイアウト
 //                View(部品)間の感覚を30にする
                 VStack(spacing: 30.0) {
-                    Text("残り10秒")
+                    Text("残り\(timerValue - count)秒")
                         // 文字サイズを指定
                         .font(.largeTitle)
                     
@@ -29,6 +37,8 @@ struct ContentView: View {
                         // スタートボタン
                         Button(action: {
                             // ボタンをタップした時のアクション
+                            // タイマーをカウントダウン開始する関数を呼び出す
+                            startTimer()
                         }) {
                             Text("スタート")
                                 .font(.title)
@@ -42,6 +52,14 @@ struct ContentView: View {
                         // ストップボタン
                         Button(action: {
                             // ボタンをタップした時のアクション
+                            // timerHandlerをアンラップしてunwrapedTimerHandlerに代入
+                            if let unwrapedTimerHandler = timerHandler {
+                                // もしタイマーが実行中だったら停止
+                                if unwrapedTimerHandler.isValid == true {
+                                    // タイマー停止
+                                    unwrapedTimerHandler.invalidate()
+                                }
+                            }
                         }) {
                             Text("ストップ")
                                 .font(.title)
@@ -52,6 +70,11 @@ struct ContentView: View {
                         }
                     }
                 }
+            }
+            // 画面が表示されるときに実行される
+            .onAppear {
+                // カウント(経過時間)の変数を初期化
+                count = 0
             }
             // ナビゲーションバーにボタンを追加
             // navigationBarItems: 画面上部のナビゲーションバー部分のレイアウト
@@ -64,8 +87,44 @@ struct ContentView: View {
                 }
             )
         }
+    }
+    
+    // 1秒毎に実行されてカウントダウンする
+    func countDownTimer() {
+        // count(経過時間)に+1していく
+        count += 1
         
-       
+        // 残り時間が0以下の時、タイマーを止める
+        if timerValue - count <= 0 {
+            // タイマー停止
+            timerHandler?.invalidate()
+        }
+    }
+    
+    // タイマーをカウントダウン開始する関数
+    func startTimer() {
+        // timerHandlerをアンラップしてunwrapedTimerHandlerに代入
+        if let unwrapedTimerHandler = timerHandler {
+            // もしタイマーが実行中だったらスタートしない
+            if unwrapedTimerHandler.isValid == true {
+                return
+            }
+        }
+        
+        // 残り時間が0以下の時、count(経過時間)を0に初期化する
+        if timerValue - count <= 0 {
+            // count(経過時間)を0にする
+            count = 0
+        }
+        
+        // タイマーをスタート
+        timerHandler = Timer.scheduledTimer(withTimeInterval: 1, repeats:true ) {
+            _ in
+            // タイマー実行時に呼び出される
+            // 1秒毎に実行されてカウントダウンする関数を実行する
+            countDownTimer()
+        }
+        
     }
 }
 
