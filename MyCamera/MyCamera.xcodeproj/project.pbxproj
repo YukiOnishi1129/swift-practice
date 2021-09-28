@@ -11,6 +11,7 @@
 		B6111C8D2703015D006F251C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6111C8C2703015D006F251C /* ContentView.swift */; };
 		B6111C8F2703015E006F251C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6111C8E2703015E006F251C /* Assets.xcassets */; };
 		B6111C922703015E006F251C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6111C912703015E006F251C /* Preview Assets.xcassets */; };
+		B6111C9A270301C2006F251C /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6111C99270301C2006F251C /* ImagePickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		B6111C8E2703015E006F251C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6111C912703015E006F251C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B6111C932703015E006F251C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6111C99270301C2006F251C /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				B6111C8A2703015D006F251C /* MyCameraApp.swift */,
 				B6111C8C2703015D006F251C /* ContentView.swift */,
+				B6111C99270301C2006F251C /* ImagePickerView.swift */,
 				B6111C8E2703015E006F251C /* Assets.xcassets */,
 				B6111C932703015E006F251C /* Info.plist */,
 				B6111C902703015E006F251C /* Preview Content */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6111C8D2703015D006F251C /* ContentView.swift in Sources */,
+				B6111C9A270301C2006F251C /* ImagePickerView.swift in Sources */,
 				B6111C8B2703015D006F251C /* MyCameraApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
