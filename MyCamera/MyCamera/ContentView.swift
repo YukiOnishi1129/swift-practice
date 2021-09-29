@@ -12,6 +12,8 @@ struct ContentView: View {
     @State var captureImage: UIImage? = nil
     // 撮影画面のsheetの表示を管理する状態変数
     @State var isShowSheet = false
+    // シェア画面のsheetの表示を管理する状態関数
+    @State var isShowActivity = false
     
     var body: some View {
         // 縦方向にレイアウト
@@ -57,6 +59,31 @@ struct ContentView: View {
             .sheet(isPresented: $isShowSheet) {
                 // UIImagePickerController(写真撮影)をsheetに表示
                 ImagePickerView(isShowSheet: $isShowSheet, captureImage: $captureImage)
+            }
+            
+            // 「SNSに投稿する」ボタン
+            Button(action: {
+                // ボタンをタップした時のアクション
+                // 撮影した写真がある時だけ
+                // UIActivityController(シェア機能)を表示
+                // captureImageがnilではない場合に、isShowActivityをtrueにしてSNSシェアを表示させる
+                if let _ = captureImage {
+                    isShowActivity = true
+                }
+            }) {
+                Text("SNSに投稿する")
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 50)
+                    .multilineTextAlignment(.center)
+                    .background(Color.blue)
+                    .foregroundColor(Color.white)
+            }
+            .padding()
+            // sheetを表示
+            // isPresentedで指定した状態変数がtrueの時実行
+            .sheet(isPresented: $isShowActivity) {
+                // UIActivityController(シェア機能)を表示、シェアする写真を渡す
+                ActivityView(shareItems: [captureImage!])
             }
         }
     }
