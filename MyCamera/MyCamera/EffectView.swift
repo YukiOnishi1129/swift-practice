@@ -87,13 +87,14 @@ struct EffectView: View {
                     .background(Color.blue)
                     .foregroundColor(Color.white)
             }
+            // スペースを追加
             .padding()
             
-            // スペースを追加
-            Spacer()
             // 「シェア」ボタン
             Button(action: {
                 //  ボタンをタップした時のアクション
+                // UIActivityViewControllerをモーダル表示する
+                isShowActivity = true
             }) {
                 // テキストを表示
                 Text("シェア")
@@ -103,13 +104,19 @@ struct EffectView: View {
                     .background(Color.blue)
                     .foregroundColor(Color.white)
             }
+            .sheet(isPresented: $isShowActivity) {
+                // UIActivityViewControllerを表示する
+                ActivityView(shareItems: [showImage!])
+            }
+            // スペースを追加
             .padding()
             
-            // スペースを追加
-            Spacer()
+            
             // 「閉じる」ボタン
             Button(action: {
                 //  ボタンをタップした時のアクション
+                // エフェクト編集画面を閉じる
+                isShowSheet = false
             }) {
                 // テキストを表示
                 Text("閉じる")
