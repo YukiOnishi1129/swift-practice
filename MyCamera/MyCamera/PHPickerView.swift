@@ -45,11 +45,14 @@ struct PHPickerView: UIViewControllerRepresentable {
                         print("使用できる写真がないです。")
                     }
                 }
+                // sheetを閉じない
+                parent.isShowSheet = true
             } else {
                 print("選択された写真はないです。")
+                // sheetを閉じる
+                parent.isShowSheet = false
             }
-            // sheetを閉じる
-            parent.isShowSheet = false
+           
         }
     }
     

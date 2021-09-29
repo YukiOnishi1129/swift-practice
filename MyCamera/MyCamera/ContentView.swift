@@ -26,7 +26,7 @@ struct ContentView: View {
             Button(action: {
                 // ボタンをタップした時のアクション
                 // 撮影写真を初期化する
-                captureImage = true
+                captureImage = nil
                 // ActionSheetを表示する
                 isShowAction = true
             }) {
