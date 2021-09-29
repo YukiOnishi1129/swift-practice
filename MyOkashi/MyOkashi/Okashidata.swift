@@ -6,6 +6,16 @@
 //
 
 import Foundation
+import UIKit
+
+// Identifiableプロトコルを利用して、お菓子の情報をまとめる構造体
+// Identifiable: 一意に識別できる型として定義することができる
+struct OkashiItem: Identifiable {
+    let id = UUID() // ランダムな一意の値を生成
+    let name: String
+    let link: URL
+    let image: UIImage
+}
 
 // お菓子データ検索用クラス
 // ObservableObject: データ状態を管理するために使用
@@ -25,6 +35,11 @@ class OkashiData: ObservableObject {
         // 複数要素
         let item: [Item]?
     }
+    
+    // お菓子のリスト (Identifiableプロトコル)
+    // @Published: プロパティを監視して自動通知することができる (@ObservedObjectを用いたViewファイルのViewを再描画する)
+    @Published var okashiList: [OkashiItem] = []
+    
     // Web API検索用メソッド 第一引数: keyword 検索したいワード
     func searchOkashi(keyword: String) {
         // デバッグエリアに出力
@@ -66,7 +81,31 @@ class OkashiData: ObservableObject {
                 // 受け取ったJSONデータをパース(解析)して格納
                 // 構造体「ResultJson」の形にパースする
                 let json = try decoder.decode(ResultJson.self, from: data!)
-                print(json)
+//                print(json)
+                
+                // お菓子の情報が取得できているか確認
+                if let items = json.item {
+                    // お菓子のリストを初期化
+                    // self: 自分自身を参照するプロパティ
+                    // removeAll: 全削除
+                    self.okashiList.removeAll()
+                    // 取得しているお菓子の数だけ処理
+                    for item in items {
+                        // お菓子の名称、掲載URL、画像URLをアンラップ
+                        if let name = item.name,
+                           let link = item.url,
+                           let imageUrl = item.image,
+                           let imageData = try? Data(contentsOf: imageUrl),
+                           let image = UIImage(data: imageData)?.withRenderingMode(.alwaysOriginal) {
+                            
+                            // 1つのお菓子を構造体でまとめて管理
+                            let okashi = OkashiItem(name: name, link: link, image: image)
+                            // お菓子の配列へ追加
+                            self.okashiList.append(okashi)
+                        }
+                    }
+                    print(self.okashiList)
+                }
             } catch {
                 // エラー処理
                 print("エラーが出ました")
